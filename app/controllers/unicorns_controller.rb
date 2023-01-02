@@ -2,16 +2,21 @@ class UnicornsController < ApplicationController
   before_action :get_unicorn, only: [:show, :destroy, :edit, :update]
 
   def index
-    @unicorn = Unicorn.all
+    @unicorns = Unicorn.all
   end
 
   def show
+  end
+
+  def new
+    @unicorn = Unicorn.new
   end
 
   def create
     @unicorn = Unicorn.new(unicorn_params)
     @unicorn.user = current_user
     @unicorn.save!
+    redirect_to unicorns_path
   end
 
   private

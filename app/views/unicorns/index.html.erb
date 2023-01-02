@@ -1,10 +1,12 @@
 <h1>Index</h1>
 <h2>Hear is yours unicorns selections:</h2>
 
+<%= link_to "create yourt Unicorn", new_unicorn_path %>
+
 
 <% @unicorns.each do |unicorn| %>
-<%= unicorn.image_url %>
-<%= unicorn.name %>
+<%= image_tag unicorn.image_url %>
+<%= link_to unicorn.name, unicorn_path(unicorn) %>
 <%= unicorn.description %>
 <%= unicorn.location %>
 <%= unicorn.price %>
