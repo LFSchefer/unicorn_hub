@@ -14,4 +14,5 @@ new_user.email = "admin@mail.com"
 new_user.password = "azerty"
 new_user.save!
 
+
 puts "Admin user create"
