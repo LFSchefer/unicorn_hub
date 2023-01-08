@@ -1,13 +1,13 @@
-<h1>Index</h1>
-<h2>Hear is yours unicorns selections:</h2>
+<div class="container">
+  <h1>Index</h1>
+  <h2>Hear is yours unicorns selections:</h2>
 
-<%= link_to "create yourt Unicorn", new_unicorn_path %>
+  <%= link_to "create yourt Unicorn", new_unicorn_path %>
 
+  <div class="card-container">
+    <% @unicorns.each do |unicorn| %>
+      <%= render "unicorn_card", unicorn: unicorn %>
+    <% end %>
+  </div>
 
-<% @unicorns.each do |unicorn| %>
-<%= image_tag unicorn.image_url %>
-<%= link_to unicorn.name, unicorn_path(unicorn) %>
-<%= unicorn.description %>
-<%= unicorn.location %>
-<%= unicorn.price %>
-<% end %>
+</div>

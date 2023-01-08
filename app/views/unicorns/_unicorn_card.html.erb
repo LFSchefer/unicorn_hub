@@ -1,0 +1,11 @@
+<div class="unicorn-card">
+  <%= image_tag unicorn.image_url %>
+  <div class="unicorn-card-infos">
+    <div>
+      <h2><%= link_to unicorn.name, unicorn_path(unicorn) %></h2>
+      <p><%= unicorn.description %></p>
+      <p><%= unicorn.location %></p>
+    </div>
+    <h2 class="unicorn-card-pricing"><%= unicorn.price %></h2>
+  </div>
+</div>
