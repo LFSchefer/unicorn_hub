@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     @unicorn = Unicorn.find(params[:unicorn_id])
     @booking.unicorn = @unicorn
     if @booking.save
-      redirect_to unicorn_path(@unicorn), notice: "Your unicorn has been booked"
+      redirect_to unicorn_path(@unicorn), alert: "Your unicorn has been booked"
     else
       render :new, status: :unprocessable_entity
     end
