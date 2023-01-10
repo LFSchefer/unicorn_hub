@@ -5,3 +5,11 @@
 <h1><%= @unicorn.name %></h1>
 <h3><%= @unicorn.price %></h3>
 <p><%= @unicorn.description %></p>
+<p><%= @unicorn.location %></p>
+
+
+<%= simple_form_for [@unicorn, @booking] do |f| %>
+<%= f.input :start_date%>
+<%= f.input :end_date%>
+<%= f.submit %>
+<% end %>
