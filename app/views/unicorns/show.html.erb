@@ -8,6 +8,7 @@
 <p><%= @unicorn.location %></p>
 
 
+
 <%= simple_form_for [@unicorn, @booking], data: { controller: 'flatpickr' } do |f| %>
 <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startDate" } }%>
 <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endDate" }, id: "end_time" }%>
