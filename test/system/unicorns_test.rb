@@ -1,6 +1,15 @@
 require "application_system_test_case"
 
 class UnicornsTest < ApplicationSystemTestCase
+
+  test "unicorn count" do
+
+    visit root_url
+
+    assert_selector ".unicorn-card", count: Unicorn.count
+
+  end
+
   test "visiting the index" do
 
     visit root_url
@@ -9,12 +18,12 @@ class UnicornsTest < ApplicationSystemTestCase
 
   end
 
-  test "unicorn count" do
+  test "visite show" do
 
     visit root_url
 
-    assert_selector ".unicorn-card", count: Unicorn.count
-
+    click_on Unicorn.first.name
+    assert_selector "h1", text: Unicorn.first.name
   end
 
   test "as user add a unicorn to rent" do
