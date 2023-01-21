@@ -26,7 +26,7 @@ class UnicornsTest < ApplicationSystemTestCase
     assert_selector "h1", text: Unicorn.first.name
   end
 
-  
+
   test "as user add a unicorn to rent" do
     login_as users(:bob)
     visit "/unicorns/new"
@@ -44,5 +44,6 @@ class UnicornsTest < ApplicationSystemTestCase
 
     assert_text "The Moon"
   end
+  
 
 end
