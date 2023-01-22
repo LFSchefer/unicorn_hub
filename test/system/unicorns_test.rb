@@ -45,5 +45,4 @@ class UnicornsTest < ApplicationSystemTestCase
     assert_text "The Moon"
   end
   
-
 end
