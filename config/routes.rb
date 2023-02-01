@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :unicorns do
     resources :bookings, only: [:new, :create]
+    resources :reviews, only: [:new, :create]
   end
   resources :bookings, only: [:index]
-  resources :reviews, only: [:new, :create]
 end
