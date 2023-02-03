@@ -10,5 +10,8 @@ application.register("flatpickr", FlatpickrController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import ReviewFormController from "./review_form_controller"
+application.register("review-form", ReviewFormController)
+
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)

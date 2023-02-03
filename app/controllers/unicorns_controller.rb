@@ -9,6 +9,7 @@ class UnicornsController < ApplicationController
   def show
     @booking = Booking.new
     @review = Review.new
+    @reviews = Review.where(unicorn_id: params[:id]).last(5)
   end
 
   def new

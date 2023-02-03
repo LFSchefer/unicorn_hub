@@ -15,6 +15,8 @@ puts "Creating user !"
 new_user = User.new
 new_user.email = "admin@mail.com"
 new_user.password = "azerty"
+new_user.first_name = "Bob"
+new_user.last_name = "l'Eponge"
 new_user.save!
 
 puts "Admin user create"
