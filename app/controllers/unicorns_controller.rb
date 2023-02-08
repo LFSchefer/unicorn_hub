@@ -23,6 +23,10 @@ class UnicornsController < ApplicationController
     redirect_to unicorns_path
   end
 
+  def timer
+    # teste timer JS
+  end
+
   private
 
   def get_unicorn

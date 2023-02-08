@@ -15,3 +15,6 @@ application.register("review-form", ReviewFormController)
 
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
+
+import TimerController from "./timer_controller"
+application.register("timer", TimerController)
