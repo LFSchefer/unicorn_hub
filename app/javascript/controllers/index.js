@@ -13,6 +13,9 @@ application.register("hello", HelloController)
 import ReviewFormController from "./review_form_controller"
 application.register("review-form", ReviewFormController)
 
+import SearchUnicornsController from "./search_unicorns_controller"
+application.register("search-unicorns", SearchUnicornsController)
+
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
 
