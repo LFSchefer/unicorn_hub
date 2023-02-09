@@ -3,7 +3,23 @@ class UnicornsController < ApplicationController
   before_action :get_unicorn, only: [:show, :destroy, :edit, :update]
 
   def index
-    @unicorns = Unicorn.all
+    if params[:query].present?
+      sql_query = <<~SQL
+      unicorns.name ILIKE :query
+      OR unicorns.description ILIKE :query
+      OR unicorns.location ILIKE :query
+      OR CAST(unicorns.price AS TEXT) ILIKE :query
+      SQL
+      @unicorns = Unicorn.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @unicorns = Unicorn.all
+    end
+
+    respond_to do |format|
+      format.html
+      format.text
+      # format.text {render partial: "unicorn/unicorn_card", locals: {unicorn: @unicorn}, format: [:html]}
+    end
   end
 
   def show
