@@ -7,11 +7,11 @@
   <%= form_with url: unicorns_path, method: :get,  html: {class:
     "d-flex", data: {search_unicorns_target: "form"}} do %>
   <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a unicorn",
-         data: { search_unicorns_target: "input",
-                action: "keyup->search-unicorns#update"
+              params[:query],
+              class: "form-control",
+              placeholder: "Find a unicorn",
+              data: { search_unicorns_target: "input",
+              action: "keyup->search-unicorns#update"
 }
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
@@ -19,12 +19,10 @@
 
     <%= link_to "create yourt Unicorn", new_unicorn_path %>
 
+    <%= render "unicorn_card", unicorns: @unicorns %>
 
-    <div class="card-container">
-      <% @unicorns.each do |unicorn| %>
-        <%= render "unicorn_card", unicorn: unicorn %>
-      <% end %>
-    </div>
+
+
 
   </div>
 
