@@ -29,6 +29,10 @@ export default class extends Controller {
     setInterval(diminuerLeTemps, 1000)
   }
 
+  stopTimer() {
+    console.log(this.timerTarget)
+  }
+
 
 
 }
