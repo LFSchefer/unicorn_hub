@@ -1,19 +1,54 @@
 import { Controller } from "@hotwired/stimulus"
 
+var output = $('h1');
+var isPaused = false;
+var time = new Date();
+var offset = 0;
+var t = window.setInterval(function() {
+  if(!isPaused) {
+    var milisec = offset + (new Date()).getTime() - time.getTime();
+    output.text(parseInt(milisec / 1000) + "s " + (milisec % 1000));
+  }
+}, 10);
+
+let player = document.querySelector(".toggle");
+
+
+//with jquery
+$('.toggle').on('click', function(e) {
+  $('boutton.toggle').html('Pause')
+  e.preventDefault();
+  isPaused = !isPaused;
+  if (isPaused) {
+    offset += (new Date()).getTime() - time.getTime();
+  } else {
+    time = new Date();
+  }
+
+  if (isPaused === false) {
+    console.log('rentre')
+    player.innerHTML = "Pause"
+  } else {
+    console.log('sort')
+    player.innerHTML = "Play"
+  }
+});
 
 export default class extends Controller {
 
   static targets = ['timer']
+  static value = {
+    clock: String
+  }
 
   connect() {
 
-
   }
 
-  startTimer() {
-    let time = 300
+  startTimer(x) {
+    console.log(this.clockValue)
+    let time = this.timerTarget.innerText
     let timer = this.timerTarget
-    timer.innerText = time
 
     function diminuerLeTemps() {
 
@@ -26,13 +61,20 @@ export default class extends Controller {
       timer.innerText = minutes + ":" + secondes
       time = time <= 0 ? 0 : time - 1
     }
-    setInterval(diminuerLeTemps, 1000)
-  }
+    // setInterval(diminuerLeTemps,1000)
 
-  stopTimer() {
-    console.log(this.timerTarget)
-  }
+    setInterval( function() {if (x == 'play') {
+      console.log("play")
+      diminuerLeTemps;
+    }
+    },1000);
 
+    // function stopTimer() {
+    //   console.log(this.timerTarget.innerText)
+    //   time -= 600
+    // }
+
+  }
 
 
 }

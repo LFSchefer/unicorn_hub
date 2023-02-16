@@ -40,7 +40,7 @@ class UnicornsController < ApplicationController
 
   def timer
     # teste timer JS
-    @timer = 300
+    @timer = 3000
   end
 
   private

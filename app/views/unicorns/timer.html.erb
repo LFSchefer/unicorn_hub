@@ -1,11 +1,16 @@
 <div class="container" data-controller="timer">
 
-<div class="btn btn-primary" data-action="click->timer#startTimer">LET'S GO</div>
+<div class="btn btn-primary" data-action="click->timer#startTimer" data-timer-clock-value="play">LET'S GO</div>
 
 <h3>JS Timer</h3>
 <div id="timer" data-timer-target="timer"><%= @timer %></div>
 
-<div class="btn btn-primary" data-action="click->timer#stopTimer">STOP</div>
+<div class="btn btn-primary" data-action="click->timer#stopTimer" data-timer-clock-value="stop">STOP</div>
 
 
 </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<h1>Timer: <%= @timer %></h1>
+<button class="toggle">Play</button>
