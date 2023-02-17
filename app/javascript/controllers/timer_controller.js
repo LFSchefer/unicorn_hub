@@ -21,15 +21,9 @@ $('.toggle').on('click', function(e) {
   isPaused = !isPaused;
   if (isPaused) {
     offset += (new Date()).getTime() - time.getTime();
-  } else {
-    time = new Date();
-  }
-
-  if (isPaused === false) {
-    console.log('rentre')
     player.innerHTML = "Pause"
   } else {
-    console.log('sort')
+    time = new Date();
     player.innerHTML = "Play"
   }
 });
