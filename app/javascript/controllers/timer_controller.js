@@ -1,5 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
+// TODO full JS vinalla Timer 
+
 var output = $('h1');
 var isPaused = false;
 var time = new Date();
