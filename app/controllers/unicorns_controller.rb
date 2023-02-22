@@ -3,6 +3,7 @@ class UnicornsController < ApplicationController
   before_action :get_unicorn, only: [:show, :destroy, :edit, :update]
 
   def index
+
     if params[:query].present?
       sql_query = <<~SQL
       unicorns.name ILIKE :query
@@ -10,18 +11,22 @@ class UnicornsController < ApplicationController
       OR unicorns.location ILIKE :query
       OR CAST(unicorns.price AS TEXT) ILIKE :query
       SQL
-      @unicorns = Unicorn.where(sql_query, query: "%#{params[:query]}%")
+      @unicorns = policy_scope(Unicorn).where(sql_query, query: "%#{params[:query]}%")
     else
-      @unicorns = Unicorn.all
+      @unicorns = policy_scope(Unicorn)
     end
 
     respond_to do |format|
       format.html
       format.text {render partial: "unicorn_card",locals: {unicorns: @unicorns}, formats: [:html]}
     end
+
   end
 
   def show
+
+    authorize @unicorn
+
     @booking = Booking.new
     @review = Review.new
     @reviews = Review.where(unicorn_id: params[:id]).last(5)
@@ -29,6 +34,7 @@ class UnicornsController < ApplicationController
 
   def new
     @unicorn = Unicorn.new
+    authorize @unicorn
   end
 
   def create
@@ -36,6 +42,7 @@ class UnicornsController < ApplicationController
     @unicorn.user = current_user
     @unicorn.save!
     redirect_to unicorns_path
+    authorize @unicorn
   end
 
   def timer
