@@ -8,9 +8,21 @@
 <div class="btn btn-primary" data-action="click->timer#stopTimer" data-timer-clock-value="stop">STOP</div>
 
 
-</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <h1>Timer: <%= @timer %></h1>
 <button class="toggle">Play</button>
+
+<div class="m-5 p-5">
+  <%= form_with method: :get do |form| %>
+    <%= "Titre" %>
+    <%= form.check_box @unicorn.name %>
+    <%= form.label :pet_dog, @unicorn.name %>
+    <%= form.check_box :pet_cat %>
+    <%= form.label :pet_cat, @unicorn.price %>
+    <%= form.submit "Send" %>
+  <% end %>
+</div>
+
+</div>
