@@ -1,8 +1,6 @@
 class UnicornsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :get_unicorn, only: [:show, :destroy, :edit, :update]
-  skip_after_action :verify_policy_scoped, :only => :index
-
 
   def index
 
