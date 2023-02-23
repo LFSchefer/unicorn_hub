@@ -45,6 +45,20 @@ class UnicornsController < ApplicationController
     authorize @unicorn
   end
 
+  def edit
+    authorize @unicorn
+  end
+
+  def update
+    if @unicorn.update(unicorn_params)
+    redirect_to unicorn_path(@unicorn), alert: "Unicorn Update"
+    else
+      flash[:alert] = "Something went wrong."
+      render :new
+    end
+    authorize @unicorn
+  end
+
   def timer
     # teste timer JS
     @timer = 3000

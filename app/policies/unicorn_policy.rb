@@ -5,7 +5,7 @@ class UnicornPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-    
+
   end
 
 
@@ -19,5 +19,9 @@ class UnicornPolicy < ApplicationPolicy
 
   def create?
     true
+  end
+
+  def update?
+    record.user == user
   end
 end
