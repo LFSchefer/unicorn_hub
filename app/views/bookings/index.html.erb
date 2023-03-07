@@ -1,5 +1,7 @@
 <h1>Your bookings of Unicorns</h1>
 
-<% @bookings.each do |booking| %>
-<li><%= booking.unicorn.name, booking.start_date, booking.end_date %></li>
-<% end %>
+<ul>
+  <% @bookings.each do |booking| %>
+    <li><%= booking.unicorn.name %>|<%= booking.start_date %>|<%= booking.end_date %></li>
+  <% end %>
+</ul>
