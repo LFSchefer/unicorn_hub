@@ -2,6 +2,6 @@
 
 <ul>
   <% @bookings.each do |booking| %>
-    <li><%= booking.unicorn.name %>|<%= booking.start_date %>|<%= booking.end_date %></li>
+    <li><%= booking.unicorn.name %> | from <%= booking.start_date %> to <%= booking.end_date %> | <%= booking.number_of_days %> days for a total of <%= booking.total_price %> €</li>
   <% end %>
 </ul>
