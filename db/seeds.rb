@@ -31,8 +31,8 @@ puts "Creating Unicorns"
   # unicorn.save!
   rand(1..3).times do
     tag = Tag.find(rand(Tag.first.id..Tag.last.id))
-    unicorn.tags << tag
-    tag.unicorns << unicorn
+    unicorn.tags << Tag.all
+    tag.unicorns << Unicorn.all
     tag.save!
     unicorn.save!
   end
