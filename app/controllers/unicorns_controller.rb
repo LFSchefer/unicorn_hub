@@ -20,9 +20,9 @@ class UnicornsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.text {render partial: "unicorn_card",locals: {unicorns: @unicorns}, formats: [:html]}
+      format.text { render partial: "unicorn_card",locals: {unicorns: @unicorns}, formats: [:html] }
     end
-
+    
   end
 
   def show
