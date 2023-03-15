@@ -5,7 +5,7 @@
 
   <%= image_tag @unicorn.image_url %>
   <h1><%= @unicorn.name %></h1>
-  <h3><%= @unicorn.price %></h3>
+  <h3><%= @unicorn.price %> €</h3>
   <p><%= @unicorn.description %></p>
   <p><%= @unicorn.location %></p>
 
@@ -45,5 +45,12 @@
       </li>
     <% end %>
   </ul>
+
+    <div class="separation"></div>
+
+    <% if policy(@unicorn).edit? %>
+    <div class="btn btn-warning"><%= link_to "update unicorn", edit_unicorn_path %></div>
+    <% end %>
+
 
 </div>

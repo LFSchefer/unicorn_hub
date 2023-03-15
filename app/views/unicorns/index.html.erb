@@ -1,23 +1,30 @@
 <div class="container">
-  <h1>Index</h1>
   <h2>Hear is yours unicorns selections:</h2>
 
   <div class="recherche-wrapper" data-controller="search-unicorns">
 
-  <%= form_with url: unicorns_path, method: :get,  html: {class:
-    "d-flex", data: {search_unicorns_target: "form"}} do %>
-  <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Find a unicorn",
-              data: { search_unicorns_target: "input",
-              action: "keyup->search-unicorns#update"
-}
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
+  <div class="all">
+  <div class="my-4 top">
 
-    <%= link_to "create yourt Unicorn", new_unicorn_path %>
+    <%= form_with url: unicorns_path, method: :get,  html: {class:
+      "d-flex search", data: {search_unicorns_target: "form"}} do %>
+    <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Find a unicorn",
+                data: { search_unicorns_target: "input",
+                action: "keyup->search-unicorns#update"
+  }
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+    <div class="btn btn-primary my-4">
+      <%= link_to "Add your Unicorn", new_unicorn_path %>
+    </div>
+
+  </div>
 
     <%= render "unicorn_card", unicorns: @unicorns %>
 

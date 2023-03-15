@@ -14,10 +14,11 @@ class BookingsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+    authorize @booking
   end
 
   def index
-    @bookings = Booking.where(user: current_user)
+    @bookings = policy_scope(Booking).where(user: current_user)
   end
 
   private

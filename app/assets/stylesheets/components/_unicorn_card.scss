@@ -2,12 +2,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-.unicorn-card > img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
+  transition: 0.4s;
 }
 
 .unicorn-card h2 {
@@ -22,6 +17,17 @@
   margin: 0;
 }
 
+.unicorn-card a {
+  text-decoration: none;
+  color: black;
+
+  img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
 
 .unicorn-card .unicorn-card-infos {
   padding: 16px;
@@ -29,6 +35,7 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  background-color: #eeeeee;
 }
 
 .unicorn-card-infos .unicorn-card-user {
@@ -36,4 +43,43 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.unicorn-card:hover {
+  box-shadow: 0 0 15px rgba(242, 0, 255, 0.3);
+  animation: color 2.5s ease infinite;
+  scale: 1.02;
+  .unicorn-name {
+    background-image:
+    linear-gradient(to right, red,orange,yellow,green,blue,indigo,rgb(238, 130, 130));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  animation: move 50s linear infinite;
+  }
+}
+
+
+@keyframes move {
+  to {
+      background-position: 2500vh;
+  }
+}
+
+@keyframes color {
+
+  0% {
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+  }
+  25% {
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(140, 255, 0, 0.3);
+  }
+  75% {
+    box-shadow: 0 0 15px rgba(0, 162, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(221, 0, 255, 0.3);
+  }
 }

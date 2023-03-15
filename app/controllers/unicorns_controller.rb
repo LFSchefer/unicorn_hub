@@ -11,10 +11,12 @@ class UnicornsController < ApplicationController
       OR unicorns.location ILIKE :query
       OR CAST(unicorns.price AS TEXT) ILIKE :query
       SQL
-      @unicorns = policy_scope(Unicorn).where(sql_query, query: "%#{params[:query]}%")
+      @unicorns = policy_scope(Unicorn).where(sql_query, query: "%#{params[:query]}%").order(created_at: :asc)
     else
-      @unicorns = policy_scope(Unicorn)
+      @unicorns = policy_scope(Unicorn).order(created_at: :asc)
     end
+
+
 
     respond_to do |format|
       format.html
@@ -42,6 +44,20 @@ class UnicornsController < ApplicationController
     @unicorn.user = current_user
     @unicorn.save!
     redirect_to unicorns_path
+    authorize @unicorn
+  end
+
+  def edit
+    authorize @unicorn
+  end
+
+  def update
+    if @unicorn.update(unicorn_params)
+    redirect_to unicorn_path(@unicorn), alert: "Unicorn Update"
+    else
+      flash[:alert] = "Something went wrong."
+      render :new
+    end
     authorize @unicorn
   end
 

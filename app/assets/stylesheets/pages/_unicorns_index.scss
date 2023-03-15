@@ -3,3 +3,33 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
 }
+
+.btn {
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.search {
+  width: 70%;
+}
+
+.top {
+  display: flex;
+  width: 80%;
+}
+
+.all {
+  display: flex;
+}
+
+// @-webkit-keyframes rainbow {
+//   0% {border-color: hsl(0, 100%, 50%);}
+//   100% {border-color: hsl(255, 100%, 50%);}
+// }
+
+// .rainbow {
+//   border: 4px solid hsl(0, 100%, 50%);
+//   -webkit-animation: rainbow 2s infinite alternate;
+// }
