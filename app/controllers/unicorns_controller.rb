@@ -11,10 +11,12 @@ class UnicornsController < ApplicationController
       OR unicorns.location ILIKE :query
       OR CAST(unicorns.price AS TEXT) ILIKE :query
       SQL
-      @unicorns = policy_scope(Unicorn).where(sql_query, query: "%#{params[:query]}%")
+      @unicorns = policy_scope(Unicorn).where(sql_query, query: "%#{params[:query]}%").order(created_at: :asc)
     else
-      @unicorns = policy_scope(Unicorn)
+      @unicorns = policy_scope(Unicorn).order(created_at: :asc)
     end
+
+
 
     respond_to do |format|
       format.html
