@@ -1,0 +1,26 @@
+.non-booking {
+  margin: 35px;
+  text-align: center;
+  a {
+    font-size: larger;
+  }
+}
+
+.booking {
+  min-height: 80vh;
+}
+
+.booking-list {
+  li {
+    list-style: none;
+    background-color: #e1ebf2;
+    margin: 6px;
+    padding: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .booking-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

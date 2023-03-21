@@ -1,7 +1,21 @@
-<h1>Your bookings of Unicorns</h1>
+<div class="container booking">
 
-<ul>
-  <% @bookings.each do |booking| %>
-    <li><%= booking.unicorn.name %> | from <%= booking.start_date %> to <%= booking.end_date %> | <%= booking.number_of_days %> days for a total of <%= booking.total_price %> €</li>
+  <% if @bookings.empty? %>
+    <div class="non-booking">
+      <h1>You don't have any booking</h1>
+      <%= link_to "choose a unicorn to book now", unicorns_path %>
+    </div>
+  <% else %>
+    <h1 class="text-center">Your bookings of Unicorns</h1>
   <% end %>
-</ul>
+  <div class="booking-list">
+    <ul>
+      <% @bookings.each do |booking| %>
+        <li><div class="booking-info">
+        
+        <%= booking.unicorn.name %> | from <%= booking.start_date %> to <%= booking.end_date %> | <%= booking.number_of_days %> days for a total of <%= booking.total_price %> €</div></li>
+        <% end %>
+    </ul>
+  </div>
+
+</div>

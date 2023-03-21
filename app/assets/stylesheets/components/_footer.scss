@@ -1,0 +1,35 @@
+.footer {
+  margin-top: 35px;
+  background-color: #b9c2cd;
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 50px;
+  bottom:0;
+
+}
+
+.footer-texte {
+  color: black;
+  opacity: 0.35;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  h5 {
+    opacity: 0.35;
+  }
+}
+.footer-links a {
+  color: black;
+  opacity: 0.35;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}

@@ -4,10 +4,10 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["input", "form", "unicorn"]
   connect() {
-    console.log("connected to search")
-    console.log(this.inputTarget)
-    console.log(this.formTarget)
-    console.log(this.unicornTarget)
+    // console.log("connected to search")
+    // console.log(this.inputTarget)
+    // console.log(this.formTarget)
+    // console.log(this.unicornTarget)
   }
 
   update() {

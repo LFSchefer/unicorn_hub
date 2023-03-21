@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["review", "bouton"]
   connect() {
-    console.log("connected to review form controller")
+    // console.log("connected to review form controller")
   }
 
   form() {
