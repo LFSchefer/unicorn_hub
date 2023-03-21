@@ -16,6 +16,7 @@ class ReviewsController < ApplicationController
       flash[:alert] = "Something went wrong."
       render :new
     end
+    authorize @review
   end
 
   private
