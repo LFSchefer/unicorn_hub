@@ -21,6 +21,13 @@ class BookingsController < ApplicationController
     @bookings = policy_scope(Booking).where(user: current_user)
   end
 
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to bookings_path, notice: "Your booking has been canceled!"
+    authorize @booking
+  end
+
   private
 
   def bookings_params

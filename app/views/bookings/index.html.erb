@@ -11,9 +11,19 @@
   <div class="booking-list">
     <ul>
       <% @bookings.each do |booking| %>
-        <li><div class="booking-info">
-        
-        <%= booking.unicorn.name %> | from <%= booking.start_date %> to <%= booking.end_date %> | <%= booking.number_of_days %> days for a total of <%= booking.total_price %> €</div></li>
+        <li>
+          <div class="booking-info">
+            <p><%=link_to booking.unicorn.name, unicorn_path(booking.unicorn) %> </p>
+            <p> from <%= booking.start_date %> to <%= booking.end_date %> </p>
+            <p> <%= booking.number_of_days %> days for a total of <%= booking.total_price %> € </p>
+            <div class="delete">
+              <p><%= link_to "Cancel booking",
+              booking_path(booking),
+              data: {turbo_method: :delete, turbo_confirm: "Delete reservation ?"}
+              %></p>
+            </div>
+          </div>
+        </li>
         <% end %>
     </ul>
   </div>
