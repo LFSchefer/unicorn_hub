@@ -1,0 +1,2 @@
+class UnicornTagsController < ApplicationController
+end

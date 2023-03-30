@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_01_162505) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_30_143435) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,8 +40,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_162505) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.bigint "unicorn_id"
-    t.index ["unicorn_id"], name: "index_tags_on_unicorn_id"
+  end
+
+  create_table "unicorn_tags", force: :cascade do |t|
+    t.bigint "unicorn_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_unicorn_tags_on_tag_id"
+    t.index ["unicorn_id"], name: "index_unicorn_tags_on_unicorn_id"
   end
 
   create_table "unicorns", force: :cascade do |t|
@@ -53,8 +60,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_162505) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price"
-    t.bigint "tag_id"
-    t.index ["tag_id"], name: "index_unicorns_on_tag_id"
     t.index ["user_id"], name: "index_unicorns_on_user_id"
   end
 
@@ -77,7 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_162505) do
   add_foreign_key "bookings", "users"
   add_foreign_key "reviews", "unicorns"
   add_foreign_key "reviews", "users"
-  add_foreign_key "tags", "unicorns"
-  add_foreign_key "unicorns", "tags"
+  add_foreign_key "unicorn_tags", "tags"
+  add_foreign_key "unicorn_tags", "unicorns"
   add_foreign_key "unicorns", "users"
 end
