@@ -3,6 +3,7 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   transition: 0.4s;
+  position: relative;
 }
 
 .unicorn-card h2 {
@@ -28,6 +29,18 @@
   }
 }
 
+.tags {
+  position: absolute;
+  left: 16px;
+  bottom: 110px;
+  span {
+    color: white;
+    background-color: orange;
+    padding: 6px;
+    border-radius: 28px;
+  }
+}
+
 
 .unicorn-card .unicorn-card-infos {
   padding: 16px;
@@ -36,6 +49,7 @@
   align-items: flex-end;
   position: relative;
   background-color: #eeeeee;
+  height: 100px;
 }
 
 .unicorn-card-infos .unicorn-card-user {
