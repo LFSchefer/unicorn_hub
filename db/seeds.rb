@@ -33,7 +33,7 @@ puts "Creating Unicorns"
     unicorn_tags = UnicornTag.new
     unicorn_tags.unicorn = unicorn
     unicorn_tags.tag = Tag.find(rand(Tag.first.id..Tag.last.id))
-    unicorn_tags.save!
+    unicorn_tags.save
   end
 end
 
