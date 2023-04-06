@@ -38,3 +38,4 @@ puts "Creating Unicorns"
 end
 
 puts "Unicorn created !"
+puts "DONE !"
