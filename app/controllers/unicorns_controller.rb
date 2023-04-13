@@ -22,7 +22,7 @@ class UnicornsController < ApplicationController
       format.html
       format.text { render partial: "unicorn_card",locals: {unicorns: @unicorns}, formats: [:html] }
     end
-    
+
   end
 
   def show
@@ -61,11 +61,16 @@ class UnicornsController < ApplicationController
     authorize @unicorn
   end
 
+  # For testing
   def timer
-    # teste timer JS
     @timer = 3000
     @unicorn = Unicorn.first
+    authorize @unicorn
+    if params[:commit] == "Send"
+      @unicorn = Unicorn.find(rand(Unicorn.first.id..Unicorn.last.id))
+    end
   end
+  # For testing
 
   private
 

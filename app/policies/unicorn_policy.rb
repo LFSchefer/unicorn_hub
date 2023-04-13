@@ -24,4 +24,10 @@ class UnicornPolicy < ApplicationPolicy
   def update?
     record.user == user
   end
+
+  # For testing
+  def timer?
+    true
+  end
+  # For testing
 end

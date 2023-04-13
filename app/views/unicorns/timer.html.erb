@@ -16,13 +16,16 @@
 
 <div class="m-5 p-5">
   <%= form_with method: :get do |form| %>
-    <%= "Titre" %>
     <%= form.check_box @unicorn.name %>
-    <%= form.label :pet_dog, @unicorn.name %>
-    <%= form.check_box :pet_cat %>
-    <%= form.label :pet_cat, @unicorn.price %>
+    <%= form.label @unicorn.name %>
+    <%= form.check_box @unicorn.price %>
+    <%= form.label @unicorn.price %>
+    <%= form.check_box @unicorn.description.first(12) %>
+    <%= form.label @unicorn.description.first(12) %>
+    <%= form.check_box @unicorn.location.first(12) %>
+    <%= form.label @unicorn.location.first(12) %>
     <%= form.submit "Send" %>
   <% end %>
 </div>
-
+<% console %>
 </div>
