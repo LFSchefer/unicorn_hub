@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to bookings_path, alert: "Your booking has been canceled!"
+    redirect_to bookings_path, alert: "Your booking has been canceled !"
     authorize @booking
   end
 
