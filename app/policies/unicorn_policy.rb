@@ -29,5 +29,5 @@ class UnicornPolicy < ApplicationPolicy
   def timer?
     true
   end
-  # For testing
+
 end
