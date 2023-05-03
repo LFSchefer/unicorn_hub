@@ -63,10 +63,10 @@ class UnicornsController < ApplicationController
 
   # For testing
   def timer
-    @timer = 3000
+    @timer = 3600
     @unicorn = Unicorn.first
     authorize @unicorn
-    if params[:commit] == "Send"
+    if params[:commit] == "Answer"
       @unicorn = Unicorn.find(rand(Unicorn.first.id..Unicorn.last.id))
     end
   end
