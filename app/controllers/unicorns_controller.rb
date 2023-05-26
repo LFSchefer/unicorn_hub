@@ -61,7 +61,7 @@ class UnicornsController < ApplicationController
     authorize @unicorn
   end
 
-  # For testing
+  # For testing purpuse
   def timer
     @timer = 3600
     @unicorn = Unicorn.first
@@ -70,7 +70,7 @@ class UnicornsController < ApplicationController
       @unicorn = Unicorn.find(rand(Unicorn.first.id..Unicorn.last.id))
     end
   end
-  # For testing
+  # For testing purpuse
 
   private
 
