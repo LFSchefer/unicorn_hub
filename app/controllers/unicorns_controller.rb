@@ -63,7 +63,7 @@ class UnicornsController < ApplicationController
 
   # For testing purpuse
   def timer
-    @timer = 3600
+    @timer = 3653
     @unicorn = Unicorn.first
     authorize @unicorn
     if params[:commit] == "Send your Answer"
