@@ -1,4 +1,6 @@
 require 'faker'
+require "nokogiri"
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
@@ -27,7 +29,26 @@ puts "Tags create"
 puts "Creating Unicorns"
 
 40.times do
-  unicorn = Unicorn.new(location: Faker::Address.full_address, name: Faker::Name.name, price: rand(5..999), description: Faker::Fantasy::Tolkien.poem, user: User.first, image_url: "https://media.istockphoto.com/id/1165132299/fr/vectoriel/licorne-autocollant-amusant-autocollant-damusement-color%C3%A9-licorne-de-t%C3%AAte.jpg?s=612x612&w=0&k=20&c=Pth_rdH7NbJaPSSvwloTdpDSr7vhKQkK9X59mDEuv1w=")
+  unicorn = Unicorn.new(name: Faker::Name.name, price: rand(5..999), description: Faker::Fantasy::Tolkien.poem, user: User.first, image_url: "https://media.istockphoto.com/id/1165132299/fr/vectoriel/licorne-autocollant-amusant-autocollant-damusement-color%C3%A9-licorne-de-t%C3%AAte.jpg?s=612x612&w=0&k=20&c=Pth_rdH7NbJaPSSvwloTdpDSr7vhKQkK9X59mDEuv1w=")
+
+  url = "https://www.bestrandoms.com/random-address-in-fr?quantity=1"
+  html_file = URI.open(url).read
+  html_doc = Nokogiri::HTML.parse(html_file)
+  out = ""
+  address = []
+
+  html_doc.search(".content").each do |element|
+    out = element.text.strip
+    address = out.split(" ")
+    address = address.slice(3,4)
+    address = address.join(" ")
+    address = address.gsub("FranceStreet:  ", "")
+    address = address.gsub("City:", ",")
+    address = address.gsub("State/province/area:", "")
+  end
+
+  unicorn.location = address
+
   unicorn.save!
   rand(0..3).times do
     unicorn_tags = UnicornTag.new
@@ -35,6 +56,8 @@ puts "Creating Unicorns"
     unicorn_tags.tag = Tag.find(rand(Tag.first.id..Tag.last.id))
     unicorn_tags.save
   end
+
+  puts unicorn
 end
 
 puts "Unicorn created !"
