@@ -47,7 +47,7 @@ puts "Creating Unicorns"
     address = address.gsub("State/province/area:", "")
   end
 
-  unicorn.location = address
+  unicorn.address = address
 
   unicorn.save!
   rand(0..3).times do

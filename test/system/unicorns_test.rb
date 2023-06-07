@@ -34,7 +34,7 @@ class UnicornsTest < ApplicationSystemTestCase
 
     fill_in "Name", with: "Miniteste"
     fill_in "Description", with: "LOREM"
-    fill_in "Location", with: "The Moon"
+    fill_in "Address", with: "The Moon"
     fill_in "Price", with: "999"
     fill_in "Image url", with: "https://media.istockphoto.com/id/937170838/fr/vectoriel/mire-de-t%C3%A9l%C3%A9vision-des-rayures.jpg?s=612x612&w=0&k=20&c=_IGxU2svrhWY_nODoX2lyGKZcepVCVpkzlqRySO-WrI="
     # save_screenshot
@@ -44,5 +44,5 @@ class UnicornsTest < ApplicationSystemTestCase
 
     assert_text "The Moon"
   end
-  
+
 end
