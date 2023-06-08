@@ -28,7 +28,7 @@ end
 puts "Tags create"
 puts "Creating Unicorns"
 
-40.times do
+10.times do
   unicorn = Unicorn.new(name: Faker::Name.name, price: rand(5..999), description: Faker::Fantasy::Tolkien.poem, user: User.first, image_url: "https://media.istockphoto.com/id/1165132299/fr/vectoriel/licorne-autocollant-amusant-autocollant-damusement-color%C3%A9-licorne-de-t%C3%AAte.jpg?s=612x612&w=0&k=20&c=Pth_rdH7NbJaPSSvwloTdpDSr7vhKQkK9X59mDEuv1w=")
 
   url = "https://www.bestrandoms.com/random-address-in-fr?quantity=1"
@@ -47,7 +47,7 @@ puts "Creating Unicorns"
     address = address.gsub("State/province/area:", "")
   end
 
-  unicorn.location = address
+  unicorn.address = address
 
   unicorn.save!
   rand(0..3).times do
@@ -57,6 +57,10 @@ puts "Creating Unicorns"
     unicorn_tags.save
   end
 
+  if unicorn.latitude == nil
+    Unicorn.destroy(unicorn.id)
+  end
+  
   puts unicorn
 end
 

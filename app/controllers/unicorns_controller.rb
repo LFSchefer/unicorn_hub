@@ -8,7 +8,7 @@ class UnicornsController < ApplicationController
       sql_query = <<~SQL
       unicorns.name ILIKE :query
       OR unicorns.description ILIKE :query
-      OR unicorns.location ILIKE :query
+      OR unicorns.address ILIKE :query
       OR CAST(unicorns.price AS TEXT) ILIKE :query
       SQL
       @unicorns = policy_scope(Unicorn).where(sql_query, query: "%#{params[:query]}%").order(created_at: :asc)
@@ -32,6 +32,14 @@ class UnicornsController < ApplicationController
     @booking = Booking.new
     @review = Review.new
     @reviews = Review.where(unicorn_id: params[:id]).last(5)
+
+    if @unicorn.geocoded?
+      @markers = {
+        lat: @unicorn.latitude,
+        lng: @unicorn.longitude
+      }
+    end
+
   end
 
   def new
@@ -79,7 +87,7 @@ class UnicornsController < ApplicationController
   end
 
   def unicorn_params
-    params.require(:unicorn).permit(:name, :description, :price, :image_url, :location)
+    params.require(:unicorn).permit(:name, :description, :price, :image_url, :address)
   end
 
 end
