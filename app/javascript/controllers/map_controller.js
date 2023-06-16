@@ -21,7 +21,7 @@ export default class extends Controller {
       })
       this.#addMarkersToMap()
       this.#fitMapToMarkers()
-      this.#addInfoWindow()
+      // this.#addInfoWindow()
       this.map.addControl(new mapboxgl.FullscreenControl());
       this.map.addControl(new mapboxgl.NavigationControl());
 
