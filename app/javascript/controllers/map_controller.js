@@ -9,9 +9,9 @@ export default class extends Controller {
   }
 
   connect() {
-      console.log(this.apiKeyValue)
-      console.log(this.markersValue)
-      console.log(this.markersValue[0].info_window_html)
+      // console.log(this.apiKeyValue)
+      // console.log(this.markersValue)
+      // console.log(this.markersValue[0].info_window_html)
 
       mapboxgl.accessToken = this.apiKeyValue
 
@@ -21,15 +21,24 @@ export default class extends Controller {
       })
       this.#addMarkersToMap()
       this.#fitMapToMarkers()
+      this.#addInfoWindow()
+      this.map.addControl(new mapboxgl.FullscreenControl());
+      this.map.addControl(new mapboxgl.NavigationControl());
 
+  }
+
+  #addInfoWindow() {
+    const marker = this.markersValue[0]
+    const popup = new mapboxgl.Popup({ closeOnClick: false })
+    .setLngLat([ marker.lng, marker.lat ])
+    .setHTML(marker.info_window_html)
+    .addTo(this.map);
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      // const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
-        // .setPopup(popup)
         .addTo(this.map)
     })
   }
