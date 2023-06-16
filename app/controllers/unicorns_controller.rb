@@ -32,12 +32,12 @@ class UnicornsController < ApplicationController
     @booking = Booking.new
     @review = Review.new
     @reviews = Review.where(unicorn_id: params[:id]).last(5)
-
     if @unicorn.geocoded?
-      @markers = {
+      @markers = [
         lat: @unicorn.latitude,
-        lng: @unicorn.longitude
-      }
+        lng: @unicorn.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {unicorn: @unicorn})
+      ]
     end
 
   end
