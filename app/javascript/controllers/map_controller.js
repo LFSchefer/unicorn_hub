@@ -13,6 +13,8 @@ export default class extends Controller {
       // console.log(this.markersValue)
       // console.log(this.markersValue[0].info_window_html)
 
+      // TODO Popup on hover
+
       mapboxgl.accessToken = this.apiKeyValue
 
       this.map = new mapboxgl.Map({
