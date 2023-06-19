@@ -9,11 +9,6 @@ export default class extends Controller {
   }
 
   connect() {
-      // console.log(this.apiKeyValue)
-      // console.log(this.markersValue)
-      // console.log(this.markersValue[0].info_window_html)
-
-      // TODO Popup on hover
 
       mapboxgl.accessToken = this.apiKeyValue
 
@@ -23,18 +18,10 @@ export default class extends Controller {
       })
       this.#addMarkersToMap()
       this.#fitMapToMarkers()
-      // this.#addInfoWindow()
+      this.#addPopup()
       this.map.addControl(new mapboxgl.FullscreenControl());
       this.map.addControl(new mapboxgl.NavigationControl());
 
-  }
-
-  #addInfoWindow() {
-    const marker = this.markersValue[0]
-    const popup = new mapboxgl.Popup({ closeOnClick: false })
-    .setLngLat([ marker.lng, marker.lat ])
-    .setHTML(marker.info_window_html)
-    .addTo(this.map);
   }
 
   #addMarkersToMap() {
@@ -50,4 +37,24 @@ export default class extends Controller {
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
+
+  #addPopup() {
+    const popup = new mapboxgl.Popup({
+      closeButton: false,
+      closeOnClick: false
+    })
+
+    this.map.on('click',  (e) => {
+
+      if (e.lngLat.lng.toFixed(2) === this.markersValue[0].lng.toFixed(2) && e.lngLat.lat.toFixed(2) === this.markersValue[0].lat.toFixed(2)) {
+        const marker = this.markersValue[0]
+        const popup = new mapboxgl.Popup({ closeOnClick: true })
+        .setLngLat([ marker.lng, marker.lat ])
+        .setHTML(marker.info_window_html)
+        .addTo(this.map);
+      }
+      });
+  }
+
+
 }
