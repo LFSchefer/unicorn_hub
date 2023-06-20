@@ -9,8 +9,11 @@ Rails.application.routes.draw do
     collection do
       get :timer
     end
+    resources :unicorntags, only: [:new, :create, :edit, :update]
     resources :bookings, only: [:new, :create]
     resources :reviews, only: [:new, :create]
   end
   resources :bookings, only: [:index, :destroy]
 end
+
+# TODO resole routes

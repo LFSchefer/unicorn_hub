@@ -29,6 +29,14 @@ class UnicornsController < ApplicationController
 
     authorize @unicorn
 
+    @tags = Tag.all
+    if UnicornTag.where(unicorn_id: @unicorn.id)
+      @unicorntags = UnicornTag.where(unicorn_id: @unicorn.id)
+    else
+      @unicorntags = UnicornTag.new
+    end
+
+
     @booking = Booking.new
     @review = Review.new
     @reviews = Review.where(unicorn_id: params[:id]).last(5)

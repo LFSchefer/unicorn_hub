@@ -83,4 +83,9 @@
     <div class="btn btn-warning"><%= link_to "update unicorn", edit_unicorn_path %></div>
     <% end %>
 
+    <%= form_with(model: @unicorntags, url: unicorn_unicorntag_path(@unicorn), method: "patch") do |f| %>
+    <%= f.collection_select :tags_id, @tags, :id, :name %>
+    <%= f.submit "Send" %>
+    <% end %>
+<% console %>
 </div>
