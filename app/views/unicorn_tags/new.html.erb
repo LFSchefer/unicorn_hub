@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <h1>Add new tag for <%= @unicorn.name %></h1>
+
+        <%= simple_form_for [@unicorn, @unicorn_tag] do |f| %>
+
+        <% if @unicorn_tag.errors.any? %>
+          <div class="alert alert-danger" role="alert">
+            <%= @unicorn_tag.errors.full_messages.join(", ") %>
+          </div>
+        <% end %>
+
+        <%= f.input :tag,
+          collection: Tag.all,
+          input_html: {multiple: true, data: {controller: "tom-select"}},
+          include_hidden: false
+        %>
+        <%= f.submit "Add tag", class: 'btn btn-primary' %>
+      <% end %>
+      </div>
+      </div>
+</div>

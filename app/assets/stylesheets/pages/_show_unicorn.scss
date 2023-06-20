@@ -32,13 +32,14 @@
 }
 
 .tags-show {
-  // position: absolute;
-  // left: 16px;
-  // bottom: 110px;
-  span {
+  .tag {
     color: white;
     background-color: orange;
     padding: 6px;
     border-radius: 28px;
+    a{
+      text-decoration: none;
+      color: white;
+    }
   }
 }
