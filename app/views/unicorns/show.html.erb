@@ -1,14 +1,31 @@
 <div class="container">
 
-  <h1>Show page Unicorn !!!</h1>
+  <div class="product">
+    <div class="product-info">
+      <h1><%= @unicorn.name %></h1>
+      <div class="descrp">
+        <h5>Description:</h5>
+        <p><%= @unicorn.description %></p>
+      </div>
+      <div class="adress">
+        <h5>Address:</h5>
+        <p><%= @unicorn.address %></p>
+      </div>
+      <div class="price">
+        <h5>Price : <%= @unicorn.price %> € / day</h5>
+      </div>
+      <div class="tags-show">
+        <% @unicorn.tags.each do |i| %>
+        <span><%= i.name %></span>
+        <% end %>
+      </div>
+    </div>
+    <div class="product-image">
+      <%= image_tag @unicorn.image_url %>
+    </div>
+  </div>
 
-
-  <%= image_tag @unicorn.image_url %>
-  <h1><%= @unicorn.name %></h1>
-  <h3><%= @unicorn.price %> €</h3>
-  <p><%= @unicorn.description %></p>
-  <p><%= @unicorn.address %></p>
-
+  <div class="separation"></div>
 
   <%= simple_form_for [@unicorn, @booking], data: { controller: 'flatpickr' } do |f| %>
     <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startDate" } }%>
@@ -19,6 +36,8 @@
     <button class="must-log"><%= link_to "You need to be log in", new_user_session_path %></button>
     <% end %>
   <% end %>
+
+  <div class="separation"></div>
 
   <div class="map-container" >
   <div style="width: 100%; height: 600px;"

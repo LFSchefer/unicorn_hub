@@ -10,3 +10,35 @@
     color: black;
   }
 }
+
+.product {
+  border: 1px solid rgba(0, 0, 0, 0.103);
+  display: flex;
+  justify-content: space-between;
+  margin: 50px auto;
+}
+
+.product-info {
+  width: 50%;
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.product-image {
+  object-fit: cover;
+  background-color: red;
+}
+
+.tags-show {
+  // position: absolute;
+  // left: 16px;
+  // bottom: 110px;
+  span {
+    color: white;
+    background-color: orange;
+    padding: 6px;
+    border-radius: 28px;
+  }
+}
