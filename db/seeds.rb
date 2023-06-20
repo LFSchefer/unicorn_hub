@@ -21,7 +21,7 @@ new_user.save!
 puts "Admin user create"
 puts "Creating Tags !"
 
-["small","pink","beautiful","exclusive","lovefull","friendly","cute"].each do |tag|
+["small","pink","beautiful","exclusive","lovefull","friendly","cute","glittery","majestic","fabulous"].each do |tag|
   Tag.create!(name: tag)
 end
 
@@ -52,7 +52,7 @@ puts "Creating Unicorns"
   unicorn.address = address
 
   unicorn.save!
-  rand(0..3).times do
+  rand(0..5).times do
     unicorn_tags = UnicornTag.new
     unicorn_tags.unicorn = unicorn
     unicorn_tags.tag = Tag.find(rand(Tag.first.id..Tag.last.id))

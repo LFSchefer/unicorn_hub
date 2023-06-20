@@ -15,9 +15,14 @@
         <h5>Price : <%= @unicorn.price %> € / day</h5>
       </div>
       <div class="tags-show">
-        <% @unicorn.tags.each do |i| %>
+        <% @unicorn.tags.first(4).each do |i| %>
         <span class="tag"><%= i.name %></span>
         <% end %>
+
+        <% if @unicorn.tags.size > 4 %>
+        <span class="tag"> + <%= @unicorn.tags.size - 4 %></span>
+        <% end %>
+
         <span class="tag"><%= link_to "+", new_unicorn_unicorn_tag_path(@unicorn) %></span>
 
         <% if current_user == @unicorn.user %>
@@ -88,3 +93,5 @@
     <div class="btn btn-warning"><%= link_to "update unicorn", edit_unicorn_path %></div>
     <% end %>
 </div>
+
+<% console %>
