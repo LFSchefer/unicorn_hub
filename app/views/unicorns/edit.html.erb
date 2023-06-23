@@ -3,7 +3,7 @@
   <%= simple_form_for @unicorn do |f| %>
   <%= f.input :name %>
   <%= f.input :image_url %>
-  <%= f.input :description %>
+  <%= f.input :description , input_html: { maxlength: 200, size: 40}%>
   <%= f.input :address %>
   <%= f.input :price %>
   <%= f.submit %>

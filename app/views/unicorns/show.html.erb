@@ -25,8 +25,11 @@
 
         <span class="tag"><%= link_to "+", new_unicorn_unicorn_tag_path(@unicorn) %></span>
 
+
         <% if current_user == @unicorn.user %>
-        <%= link_to "delete all tags", unicorn_unicorn_tag_path(@unicorn), data: { "turbo-method": :delete }, class: "btn btn-dark"%>
+          <% unless @unicorn.tags.size == 0 %>
+            <%= link_to "delete all tags", unicorn_unicorn_tag_path(@unicorn), data: { "turbo-method": :delete }, class: "btn btn-dark"%>
+          <% end %>
         <% end %>
       </div>
     </div>

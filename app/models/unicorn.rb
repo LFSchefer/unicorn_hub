@@ -7,6 +7,7 @@ class Unicorn < ApplicationRecord
   validates :name, presence: true
   validates :price, presence: true
   validates :image_url, presence: true
+  validates :description, presence: true, length: { in: 10..200 }
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 end
