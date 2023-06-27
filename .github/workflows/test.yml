@@ -38,4 +38,4 @@ jobs:
         with:
           node-version: "16"
       - name: Yarn install
-        run: yarn install --frozen-lockfile runs the script
+        run: yarn add --frozen-lockfile
