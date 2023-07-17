@@ -23,6 +23,10 @@
         <span class="tag"> + <%= @unicorn.tags.size - 4 %></span>
         <% end %>
 
+        <% if @unicorn.tags.size == 0 %>
+        <span>Add tag</span>
+        <% end %>
+
         <span class="tag"><%= link_to "+", new_unicorn_unicorn_tag_path(@unicorn) %></span>
 
 
@@ -94,5 +98,8 @@
 
     <% if policy(@unicorn).edit? %>
     <div class="btn btn-warning"><%= link_to "update unicorn", edit_unicorn_path %></div>
+    <% end %>
+    <% if policy(@unicorn).destroy? %>
+    <div class="btn btn-danger"><%= link_to "destroy unicorn", unicorn_path(@unicorn), data: {turbo_method: :delete, turbo_confirm: "Delete #{@unicorn.name}?"} %></div>
     <% end %>
 </div>

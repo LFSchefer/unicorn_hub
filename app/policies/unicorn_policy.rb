@@ -25,6 +25,10 @@ class UnicornPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def destroy?
+    record.user == user
+  end
+
   # For testing
   def timer?
     true

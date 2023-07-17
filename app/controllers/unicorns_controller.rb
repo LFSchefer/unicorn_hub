@@ -16,11 +16,10 @@ class UnicornsController < ApplicationController
       @unicorns = policy_scope(Unicorn).order(created_at: :asc)
     end
 
-
-
     respond_to do |format|
       format.html
-      format.text { render partial: "unicorn_card",locals: {unicorns: @unicorns}, formats: [:html] }
+      format.text { render partial: 'unicorn_card',locals: {unicorns: @unicorns}, formats: [:html] }
+
     end
 
   end
@@ -37,10 +36,9 @@ class UnicornsController < ApplicationController
       @markers = [
         lat: @unicorn.latitude,
         lng: @unicorn.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {unicorn: @unicorn})
+        info_window_html: render_to_string(partial: 'info_window', locals: {unicorn: @unicorn})
       ]
     end
-
   end
 
   def new
@@ -62,10 +60,20 @@ class UnicornsController < ApplicationController
 
   def update
     if @unicorn.update(unicorn_params)
-    redirect_to unicorn_path(@unicorn), alert: "Unicorn Update"
+      redirect_to unicorn_path(@unicorn), alert: 'Unicorn Update'
     else
-      flash[:alert] = "Something went wrong."
+      flash[:alert] = 'Something went wrong'
       render :new
+    end
+    authorize @unicorn
+  end
+
+  def destroy
+    if current_user.id == @unicorn.user_id
+      @unicorn.destroy
+      redirect_to unicorns_path
+    else
+      flash[:alert] = 'Unautorize to delete'
     end
     authorize @unicorn
   end
@@ -75,7 +83,7 @@ class UnicornsController < ApplicationController
     @timer = 3653
     @unicorn = Unicorn.first
     authorize @unicorn
-    if params[:commit] == "Send your Answer (teste)"
+    if params[:commit] == 'Send your Answer (teste)'
       @unicorn = Unicorn.find(rand(Unicorn.first.id..Unicorn.last.id))
     end
   end
