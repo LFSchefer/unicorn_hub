@@ -4,6 +4,10 @@ class UnicornsController < ApplicationController
 
   def index
 
+
+    # TODO tag select
+
+    
     if params[:query].present?
       sql_query = <<~SQL
       unicorns.name ILIKE :query
