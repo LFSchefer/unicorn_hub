@@ -42,6 +42,22 @@
   }
 }
 
+.review-average {
+  position: absolute;
+  right: 16px;
+  bottom: 110px;
+  display: flex;
+  align-items: center;
+  span {
+    font-size: large;
+    padding-right:6px;
+    bottom: 110px;
+  }
+  i {
+    padding-bottom: 3px;
+  }
+}
+
 
 .unicorn-card .unicorn-card-infos {
   padding: 16px;

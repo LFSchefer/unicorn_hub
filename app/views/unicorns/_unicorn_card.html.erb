@@ -19,7 +19,12 @@
       <span> + <%= unicorn.tags.size - 4 %></span>
     <% end %>
     </div>
+    <div class="review-average">
+      <% if unicorn.reviews.size >= 1 %>
+        <span><%= unicorn.average_reviews %></span>
+        <i class="fa-solid fa-star fa-lg" style="color: #ffdd00;"></i>
+      <% end %>
+    </div>
   </div>
   <% end %>
 </div>
-
