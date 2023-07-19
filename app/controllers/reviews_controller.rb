@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @unicorn = Unicorn.find(params[:unicorn_id])
     @review.unicorn = @unicorn
     if @review.save
-      redirect_to unicorn_path(@unicorn), alert: "Your review has been saved"
+      redirect_to unicorn_path(@unicorn), notice: "Your review has been saved"
 
     else
       flash[:alert] = "Something went wrong."

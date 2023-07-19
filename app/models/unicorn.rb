@@ -10,4 +10,9 @@ class Unicorn < ApplicationRecord
   validates :description, presence: true, length: { in: 10..200 }
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def average_reviews
+    self.reviews
+  end
+
 end
