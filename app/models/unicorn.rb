@@ -15,11 +15,9 @@ class Unicorn < ApplicationRecord
   def average_reviews
     number_of_reviews = self.reviews.size
     reviews_score = []
-
     self.reviews.each do |review|
       reviews_score << review.rating
     end
-    
     reviews_score.sum.fdiv(number_of_reviews)
   end
 
