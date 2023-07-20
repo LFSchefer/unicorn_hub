@@ -11,12 +11,15 @@ class Unicorn < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+
   def average_reviews
     number_of_reviews = self.reviews.size
     reviews_score = []
+
     self.reviews.each do |review|
       reviews_score << review.rating
     end
+    
     reviews_score.sum.fdiv(number_of_reviews)
   end
 
