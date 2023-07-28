@@ -24,6 +24,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  .name-and-rank {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .rank {
+      font-size: larger;
+      margin-right: 4px;
+    }
+  }
 }
 
 .product-image {
