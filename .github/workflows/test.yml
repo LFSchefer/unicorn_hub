@@ -7,7 +7,7 @@ jobs:
     env:
       RAILS_ENV: test
       NODE_ENV: test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     # NEW! Adds postgres service. Must come before `steps`.
     services:
       postgres:
