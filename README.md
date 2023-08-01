@@ -1,1 +1,6 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+ ### Demo [site](https://secret-fjord-87437-e31a7083654e.herokuapp.com/)
+
+ # You can find me here :point_down:
+
+ [Linkedin](https://www.linkedin.com/in/lfschefer/) \
+ [Portfolio](https://portfoliolfschefer-b252e17dfee6.herokuapp.com/)
