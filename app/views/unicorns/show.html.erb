@@ -4,10 +4,12 @@
     <div class="product-info">
       <div class="name-and-rank">
         <h1><%= @unicorn.name %></h1>
+        <% if @unicorn.average_reviews > 1 %>
         <div class="average-rank">
           <span class="rank"><%= @unicorn.average_reviews %></span>
           <i class="fa-solid fa-star fa-lg" style="color: #ffdd00;"></i>
         </div>
+        <% end %>
       </div>
       <div class="descrp">
         <h5>Description:</h5>
@@ -50,15 +52,19 @@
 
   <div class="separation"></div>
 
+  <div class="flatpicker">
+
   <%= simple_form_for [@unicorn, @booking], data: { controller: 'flatpickr' } do |f| %>
     <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startDate" } }%>
     <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endDate" }, id: "end_time" }%>
     <% if user_signed_in? %>
-    <%= f.submit "Get me Unicorn !"%>
+    <%= f.submit "Get me Unicorn !", class: "book-btn" %>
     <% else %>
     <button class="must-log"><%= link_to "You need to be log in", new_user_session_path %></button>
     <% end %>
   <% end %>
+
+  </div>
 
   <div class="separation"></div>
 
@@ -109,3 +115,5 @@
     <div class="btn btn-danger"><%= link_to "destroy unicorn", unicorn_path(@unicorn), data: {turbo_method: :delete, turbo_confirm: "Delete #{@unicorn.name}?"} %></div>
     <% end %>
 </div>
+
+<% console %>

@@ -5,10 +5,19 @@
 
 .must-log {
   padding: 5px 10px;
+  background-color: #FFA500;
+  border: transparent;
+  padding: 6px 12px;
+  border-radius: 2px;
+  transition: 0.3s;
   a {
     text-decoration: none;
-    color: black;
+    color: white;
   }
+}
+
+.must-log:hover {
+  background-color: #e99700;
 }
 
 .product {

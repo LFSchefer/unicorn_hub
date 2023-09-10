@@ -1,0 +1,23 @@
+.flatpicker {
+  width: 65%;
+  margin: auto;
+  form {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+
+.book-btn {
+  height: fit-content;
+  background-color: #44f0a3;
+  border: transparent;
+  padding: 6px 12px;
+  border-radius: 2px;
+  transition: 0.3s;
+  // color: white;
+}
+
+.book-btn:hover {
+  background-color: #3fd491;
+}
