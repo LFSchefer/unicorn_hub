@@ -59,6 +59,11 @@ puts "Creating Unicorns"
     unicorn_tags.save
   end
 
+  # TODO review generate
+  # have to generate multiple user to
+
+  review = Review.new
+
   if unicorn.latitude == nil
     Unicorn.destroy(unicorn.id)
   end
