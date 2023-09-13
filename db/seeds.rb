@@ -5,11 +5,12 @@ require "nokogiri"
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
 puts "Cleaning"
+Review.destroy_all
 Tag.destroy_all
 Unicorn.destroy_all
 User.destroy_all
 
-puts "Creating user !"
+puts "Creating admin !"
 
 new_user = User.new
 new_user.email = "admin@mail.com"
@@ -17,6 +18,13 @@ new_user.password = "azerty"
 new_user.first_name = "Bob"
 new_user.last_name = "l'Eponge"
 new_user.save!
+
+puts "Creating users !"
+15.times do
+  new_user = User.new(email: "#{Faker::Name.middle_name}@mail.com", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "azerty" )
+  new_user.save!
+  puts new_user
+end
 
 puts "Admin user create"
 puts "Creating Tags !"
@@ -58,11 +66,16 @@ puts "Creating Unicorns"
     unicorn_tags.tag = Tag.find(rand(Tag.first.id..Tag.last.id))
     unicorn_tags.save
   end
+  rand(0..6).times do
+    review = Review.new
+    review.unicorn = unicorn
+    review.user = User.find(rand(User.first.id..User.last.id))
+    review.rating = rand(1..5)
+    review.content = Faker::GreekPhilosophers.quote
+    review.save!
 
-  # TODO review generate
-  # have to generate multiple user to
-
-  review = Review.new
+    puts review
+  end
 
   if unicorn.latitude == nil
     Unicorn.destroy(unicorn.id)
