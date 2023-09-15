@@ -84,5 +84,5 @@ puts "Creating Unicorns"
   puts unicorn
 end
 
-puts "Unicorn created !"
+puts "All Unicorn created !"
 puts "DONE !"
