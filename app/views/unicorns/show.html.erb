@@ -95,16 +95,18 @@
   </div>
 
 
-  <h4>Last reviews:</h4>
-  <ul>
-    <% @reviews.each do |review| %>
-      <li>
-      <%= review.rating %>
-      <%= review.user.full_name %>
-      <%= review.content %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="reviews">
+    <h4>Last reviews:</h4>
+    <ul>
+      <% @reviews.each do |review| %>
+        <li>
+        <%= review.rating %>
+        <%= review.user.full_name %>
+        <%= review.content %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
     <div class="separation"></div>
 
