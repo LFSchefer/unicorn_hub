@@ -100,8 +100,8 @@
     <ul>
       <% @reviews.each do |review| %>
         <li>
-        <%= review.rating %>
-        <%= review.user.full_name %>
+        <%= review.rating %> / 5  <i class="fa-solid fa-star fa-lg" style="color: #ffdd00;"></i> -
+        <%= review.user.full_name %>: <br>
         <%= review.content %>
         </li>
       <% end %>
