@@ -7,7 +7,7 @@ class UnicornsController < ApplicationController
 
     # TODO tag select
 
-    
+
     if params[:query].present?
       sql_query = <<~SQL
       unicorns.name ILIKE :query
@@ -87,9 +87,10 @@ class UnicornsController < ApplicationController
     @timer = 3653
     @unicorn = Unicorn.first
     authorize @unicorn
-    if params[:commit] == 'Send your Answer (teste)'
+    if params[:commit] == 'Answer'
       @unicorn = Unicorn.find(rand(Unicorn.first.id..Unicorn.last.id))
     end
+    # raise
   end
   # For testing purpuse
 

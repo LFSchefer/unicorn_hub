@@ -1,5 +1,7 @@
 <div class="container" data-controller="timer">
 
+  <div class="my-4"></div>
+
   <div class="btn btn-primary" data-action="click->timer#startTimer" data-timer-clock-value="play">LET'S GO</div>
 
   <h3>Timer</h3>
@@ -10,8 +12,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <h1>Timer: <%= @timer %></h1>
   <button class="toggle">Play</button>
-
-  <p>Teste form</p>
 
   <div class="m-5 p-5">
     <%= form_with method: :get do |form| %>
