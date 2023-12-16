@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+before_action :get_unicorn
 
   def new
     @review = Review.new
@@ -19,8 +20,18 @@ class ReviewsController < ApplicationController
     authorize @review
   end
 
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to unicorn_path(@unicorn), alert: "Review delete"
+    authorize @review
+  end
+
   private
 
+  def get_unicorn
+    @unicorn = Unicorn.find(params[:unicorn_id])
+  end
   def review_params
     params.require(:review).permit(:content, :rating)
   end

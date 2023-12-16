@@ -13,17 +13,24 @@
       </div>
     </div>
   </div>
-  
+
   <div class="reviews">
     <h4>Last reviews:</h4>
     <ul>
       <% @reviews.each do |review| %>
         <li>
-        <strong>
-        <%= review.rating %> / 5  <i class="fa-solid fa-star fa-lg" style="color: #ffdd00;"></i> -
-        <%= review.user.full_name %>: <br>
-        </strong>
-        <%= review.content %>
+          <div class="review-card">
+            <div class="reviews-text">
+              <strong>
+              <%= review.rating %> / 5  <i class="fa-solid fa-star fa-lg" style="color: #ffdd00;"></i> -
+              <%= review.user.full_name %>: <br>
+              </strong>
+              <%= review.content %>
+            </div>
+            <% if current_user.id == review.user_id %>
+              <%= link_to "delete my review", unicorn_review_path(@unicorn, review), data: {turbo_method: :delete}, class: "btn btn-dark delete-review" %>
+            <% end %>
+          </div>
         </li>
       <% end %>
     </ul>

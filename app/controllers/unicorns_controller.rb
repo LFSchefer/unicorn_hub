@@ -35,7 +35,7 @@ class UnicornsController < ApplicationController
     @tags = Tag.all
     @booking = Booking.new
     @review = Review.new
-    @reviews = Review.where(unicorn_id: params[:id]).last(5)
+    @reviews = Review.where(unicorn_id: params[:id]).last(15)
     if @unicorn.geocoded?
       @markers = [
         lat: @unicorn.latitude,

@@ -1,0 +1,49 @@
+<div class="product">
+    <div class="product-info">
+      <div class="name-and-rank">
+        <h1><%= @unicorn.name %></h1>
+        <% if @unicorn.average_reviews > 1 %>
+        <div class="average-rank">
+          <span class="rank"><%= @unicorn.average_reviews %></span>
+          <i class="fa-solid fa-star fa-lg" style="color: #ffdd00;"></i>
+        </div>
+        <% end %>
+      </div>
+      <div class="descrp">
+        <h5>Description:</h5>
+        <p><%= @unicorn.description %></p>
+      </div>
+      <div class="adress">
+        <h5>Address:</h5>
+        <p><%= @unicorn.address %></p>
+      </div>
+      <div class="price">
+        <h5>Price : <%= @unicorn.price %> € / day</h5>
+      </div>
+      <div class="tags-show">
+        <% @unicorn.tags.first(4).each do |i| %>
+        <span class="tag"><%= i.name %></span>
+        <% end %>
+
+        <% if @unicorn.tags.size > 4 %>
+        <span class="tag"> + <%= @unicorn.tags.size - 4 %></span>
+        <% end %>
+
+        <% if @unicorn.tags.size == 0 %>
+        <span>Add tag</span>
+        <% end %>
+
+        <span class="tag"><%= link_to "+", new_unicorn_unicorn_tag_path(@unicorn) %></span>
+
+
+        <% if current_user == @unicorn.user %>
+          <% unless @unicorn.tags.size == 0 %>
+            <%= link_to "delete all tags", unicorn_unicorn_tag_path(@unicorn), data: { "turbo-method": :delete }, class: "btn btn-dark"%>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="product-image">
+      <%= image_tag @unicorn.image_url %>
+    </div>
+  </div>

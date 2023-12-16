@@ -11,9 +11,9 @@ Rails.application.routes.draw do
     end
     resources :unicorn_tags, only: [:new, :create, :edit, :update, :destroy]
     resources :bookings, only: [:new, :create]
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:new, :create, :destroy]
   end
   resources :bookings, only: [:index, :destroy]
-end
+  # resources :review, only: [:destroy]
 
-# TODO resole routes
+end
