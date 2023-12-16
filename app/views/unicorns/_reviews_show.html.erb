@@ -1,0 +1,30 @@
+   <div class="review-form-controller" data-controller="review-form">
+    <div class="btn btn-primary" data-action="click->review-form#form" data-review-form-target="bouton">Add a review</div>
+
+    <div class="container d-none" data-review-form-target="review">
+      <div class="row">
+        <div class="col-xs-4">
+          <%= simple_form_for [@unicorn, @review] do |f| %>
+            <%= f.input :content %>
+            <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
+            <%= f.submit "Send your review" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="reviews">
+    <h4>Last reviews:</h4>
+    <ul>
+      <% @reviews.each do |review| %>
+        <li>
+        <strong>
+        <%= review.rating %> / 5  <i class="fa-solid fa-star fa-lg" style="color: #ffdd00;"></i> -
+        <%= review.user.full_name %>: <br>
+        </strong>
+        <%= review.content %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
