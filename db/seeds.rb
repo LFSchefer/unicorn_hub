@@ -39,20 +39,29 @@ puts "Creating Unicorns"
 50.times do
   unicorn = Unicorn.new(name: Faker::Name.name, price: rand(5..999), description: Faker::Fantasy::Tolkien.poem, user: User.first, image_url: "https://media.istockphoto.com/id/1165132299/fr/vectoriel/licorne-autocollant-amusant-autocollant-damusement-color%C3%A9-licorne-de-t%C3%AAte.jpg?s=612x612&w=0&k=20&c=Pth_rdH7NbJaPSSvwloTdpDSr7vhKQkK9X59mDEuv1w=")
 
-  url = "https://www.bestrandoms.com/random-address-in-fr?quantity=1"
+
+  url = "https://www.generatormix.com/random-address-in-france?number=1"
   html_file = URI.open(url).read
   html_doc = Nokogiri::HTML.parse(html_file)
   out = ""
   address = []
 
-  html_doc.search(".content").each do |element|
-    out = element.text.strip
-    address = out.split(" ")
-    address = address.slice(3,4)
-    address = address.join(" ")
-    address = address.gsub("FranceStreet:  ", "")
-    address = address.gsub("City:", ",")
-    address = address.gsub("State/province/area:", "")
+  html_doc.search(".group").each_with_index do |element, index|
+    if index == 0
+      out = element.text.strip
+      address = out.split(" ")
+      address = address.join(" ")
+      address = address.gsub("Street:", "")
+      address = address.gsub("Suburb/City:", "")
+      address = address.gsub( "Epping County/Department:", "")
+      address = address.gsub( "State/Region:", "")
+      address = address.gsub( " Postcode:", "")
+      address = address.gsub( " Country:", "")
+      address = address.gsub( " County/Department:", "")
+      address = address.gsub( " Town:", "")
+      address = address[1..-1]
+      p address
+    end
   end
 
   sleep 0.5
@@ -77,8 +86,11 @@ puts "Creating Unicorns"
     puts review
   end
 
-  if unicorn.latitude == nil
+  p unicorn.latitude
+
+  if unicorn.latitude == nil || unicorn.address.include?("number")
     Unicorn.destroy(unicorn.id)
+    p "Unicone DESTROY!!"
   end
 
   puts unicorn
