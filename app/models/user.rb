@@ -9,7 +9,11 @@ class User < ApplicationRecord
 
 
   def full_name
-    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
+    if self.first_name
+      "#{self.first_name.capitalize} #{self.last_name.capitalize}"
+    else
+      "#{self.email}"
+    end
   end
 
 end
