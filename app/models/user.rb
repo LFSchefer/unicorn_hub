@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :reviews
 
+
   def full_name
     "#{self.first_name.capitalize} #{self.last_name.capitalize}"
   end
