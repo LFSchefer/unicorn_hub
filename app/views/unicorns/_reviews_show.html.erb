@@ -27,7 +27,7 @@
               </strong>
               <%= review.content %>
             </div>
-            <% if current_user.id == review.user_id %>
+            <% if user_signed_in? && current_user.id == review.user_id %>
               <%= link_to "delete my review", unicorn_review_path(@unicorn, review), data: {turbo_method: :delete}, class: "btn btn-dark delete-review" %>
             <% end %>
           </div>

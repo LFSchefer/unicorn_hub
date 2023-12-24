@@ -10,7 +10,7 @@
     <%= text_field_tag :query,
                 params[:query],
                 class: "form-control",
-                placeholder: "Find a unicorn",
+                placeholder: "Find a unicorn: Name or Descrption or Price",
                 data: { search_unicorns_target: "input",
                 action: "keyup->search-unicorns#update"
   }
