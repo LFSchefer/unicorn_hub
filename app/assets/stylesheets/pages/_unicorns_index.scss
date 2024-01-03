@@ -5,6 +5,24 @@
   min-height: 100vh;
 }
 
+@media (max-width: 1400px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 1000px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
+    min-height: 100vh;
+  }
+}
+
 .btn {
   a {
     text-decoration: none;
